@@ -12,7 +12,6 @@ SOURCES += main.cpp \
 
 INCLUDEPATH += F:\opencv_3.4.2_Qt\opencv_3.4.2_Qt\include
 LIBS += F:\opencv_3.4.2_Qt\opencv_3.4.2_Qt\x86\bin\libopencv_*.dll
-
 HEADERS += \
     test.h \
     red.h \
