@@ -1,0 +1,39 @@
+#include <iostream>
+#include <opencv2/opencv.hpp> //肯定是头文件了！
+
+using namespace std;
+using namespace cv;//引入命名空间
+int main()
+{
+    Mat img = imread("F:/2down/c++qt/kevin.jpg");
+   // imshow("Kevin",img);
+
+    //转换为hsv格式
+      Mat hsv;
+      cvtColor(img,hsv,COLOR_BGR2HSV);
+      //imshow("k2",hsv);
+
+      //截取颜色空间范围
+      Mat mask;
+      inRange(hsv,Scalar(100,43,46),Scalar(124,255,255),mask);
+      //imshow("k3",mask);
+
+      //取反操作
+      bitwise_not(mask,mask);
+      //imshow("k4",mask);
+
+      //生成一张白色背景图,zeros创建有行有列的矩阵 像素0
+      Mat w=Mat::zeros(img.size(),img.type());
+      w= Scalar(255,255,255);//BGR
+      //imshow("k5",w);
+
+      //图片的拷贝
+      img.copyTo(w,mask);
+      imshow("k6",w);
+
+
+    waitKey(0);
+
+    return 0;
+}
+
